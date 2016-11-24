@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>懒加载</title>
+    <link rel="icon" href="images/jquery.ico" type="image/x-icon">
+    <style>
+        html,
+        body,
+        ul,
+        li,
+        a,
+        img {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .list {
+            width: 880px;
+            margin: 0 auto;
+        }
+
+        .list:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .list li a img {
+            width: 200px;
+            height: 200px;
+        }
+
+        p {
+            float: left;
+        }
+
+        .list li {
+            float: left;
+            margin: 10px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="list">
+
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji2.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji3.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji4.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+        <li>
+            <a href="#"><img data-src="images\erji1.jpg" src="http://jf.10086.cn/m/styles/default/images/loading.jpg" alt="耳机"></a>
+        </li>
+
+    </ul>
+
+
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        check()
+        $(window).on('scroll', check)
+
+        function check() {
+            $('.list li img').not('.load').each(function() {
+                if (isShow($(this))) {
+                    showImg($(this))
+                }
+            })
+        }
+
+        function isShow($node) {
+            var $windowHeight = $(window).height(),
+                $scrollTop = $(window).scrollTop(),
+                $nodeHeight = $node.outerHeight(true),
+                $offsetTop = $node.offset().top;
+            if (($scrollTop + $windowHeight) > $offsetTop && $scrollTop < ($offsetTop + $nodeHeight)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function showImg($imgs) {
+            $imgs.each(function() {
+                if (isShow($(this))) {
+                    var img = $(this).attr('data-src')
+                    $(this).attr('src', img)
+                    $(this).addClass('load')
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
